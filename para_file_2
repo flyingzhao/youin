@@ -1,0 +1,44 @@
+#!/usr/bin/env python2
+# -*- coding: utf-8 -*-
+
+import paramiko
+import time
+import MySQLdb
+ 
+#read ip from local mysql db
+pi_id='1'
+host='localhost'
+user='pi'
+passwd='raspberry'
+db='piip'
+conn=MySQLdb.connect(host=host,user=user,passwd=passwd,db=db)
+cur=conn.cursor()
+query='select * from iplist where id='+pi_id
+cur.execute(query)
+
+data = cur.fetchone()
+print data[1]
+targetip=data[1]
+cur.close()
+conn.close()
+
+ISOTIMEFORMAT="%Y-%m-%d %X"
+#transmit to target socket
+targetsocket=(targetip,22)
+user="pi"
+pwd="raspberry"
+remotepath='/home/pi/youin/mixer.zip'
+localpath='/home/zhao/youin/mixer.zip'
+print time.strftime( ISOTIMEFORMAT, time.localtime() )
+t = paramiko.Transport(targetsocket)#Create a new SSH session over an existing socket
+
+t.connect(username = user, password = pwd)#Negotiate an SSH2 session
+print  time.strftime( ISOTIMEFORMAT, time.localtime() )
+
+sftp = paramiko.SFTPClient.from_transport(t)#Create an SFTP client channel from an open Transport.
+print  time.strftime( ISOTIMEFORMAT, time.localtime() )
+sftp.put(localpath,remotepath)#Copy a local file (localpath) to the SFTP server as remotepath.
+print  time.strftime( ISOTIMEFORMAT, time.localtime() )
+t.close()
+
+print 'OK'
