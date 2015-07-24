@@ -4,7 +4,7 @@ Hardware Platform: RaspberryPi2 B+
 Host Platform: Ubuntu 14.04
 Main Modules:
 <ul>
-<li>Paramiko </li>`
+<li>Paramiko</li>
 <li>Pyinotify</li>
 <li>Pucups</li>
 </ul>
