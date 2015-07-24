@@ -6,7 +6,7 @@ Main Modules:
 <ul>
 <li>Paramiko</li>
 <li>Pyinotify</li>
-<li>Pucups</li>
+<li>Pycups</li>
 </ul>
 
 Tools:
