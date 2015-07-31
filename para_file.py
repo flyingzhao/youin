@@ -2,11 +2,11 @@
 
 import paramiko
 
-targetsocket=("192.168.137.100",22)
+targetsocket=("121.248.53.183",22)
 user="pi"
 pwd="raspberry"
-remotepath='/home/pi/youin/123.xls'
-localpath='/home/zhao/123.xls'
+remotepath='/home/pi/youin/123.pdf'
+localpath='/home/zhao/123.pdf'
 
 t = paramiko.Transport(targetsocket)
 
