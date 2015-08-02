@@ -13,7 +13,7 @@ conn = cups.Connection()
 printers = conn.getPrinters()
 printer_name = printers.keys()[0]
 print printer_name
-conn.printFile(printer_name, '123.pdf', "Photo Booth",{'media':'A4','page-ranges':'7-8','sides':'two-sided-short-edge'})
+conn.printFile(printer_name, '1234.pdf', "Photo Booth",{'page-ranges':'3-4','sides':'two-sided-long-edges'})
 
 #conn.printFile(printer_name, BPicture, "Photo Booth",{"copies": "2"})
 
